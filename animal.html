@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The fun and informative Animal Game</title>
+</head>
+
+<body>
+
+    <h1>Animal Game by Darren Ross</h1>
+    <h2>Getting input</h2>
+
+    <form>
+        <label for="form1_hidden_animal">The hidden animal type </label>
+        <input type="password" value="Chicken" id="form1_hidden_animal" name="form1_hidden_animal"> <br>
+
+        <label for="form1_guess">Guess the animal </label>
+        <input type="text" id="form1_guess" name="form1_guess" autofocus> <br>
+
+        <input type="button" onclick="checkAnimal()" value="Check the guess">
+    </form>
+
+
+    <p id="result">This text will be replaced </p>
+    <p id="wrong">This text will also be replaced</p>
+
+    <script>
+        var wrong = 0
+        var correct = 0
+
+        function checkAnimal() {
+            console.log("Getting form values")
+            animal = document.getElementById("form1_hidden_animal").value
+            guess = document.getElementById("form1_guess").value
+            
+            out = document.getElementById("result")
+            out2 = document.getElementById("wrong")
+            if (animal === guess) {
+                alert("Ruff Ruff")
+                correct += 1
+                out.innerHTML = "Correct Guesses: " + correct
+            } else {
+                alert("Grrrr")
+                wrong += 1
+                out2.innerHTML = "Wrong Guesses: " + wrong
+            }
+        }
+    </script>
+
+</body>
+
+</html>
