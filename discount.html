@@ -1,51 +1,90 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
     <title>The Reduction Calculator</title>
 </head>
 
 <body>
 
-<h1>Darren Ross's discount calculations</h1>
+    <h1>Darren Ross's discount calculations</h1>
 
-<form>
-    <label for="price">Enter price per </label>
-    <input type ="number" id="price" name="price" min=0 max=100 step=1 value=10> <br>
+    <form>
+        <label for="price">Enter price per </label>
+        <input type="number" id="price" name="price" min=0 max=100 step=1 value=10> <br>
 
-    <label for="count">Enter the number of items </label>
-    <input type ="number" id="count" name="count" min=0 max=100 step=1 value=9> <br>
+        <label for="count">Enter the number of items </label>
+        <input type="number" id="count" name="count" min=0 max=100 step=1 value=9> <br>
 
-    <label for="reduction">Enter the discount percent </label>
-    <input type="number" id="reduction" name="reduction" min=0 max=100 step=1 value=5> <br>
+        <label for="reduction">Enter the discount percent </label>
+        <input type="number" id="reduction" name="reduction" min=0 max=100 step=1 value=5> <br>
 
-    <input type="button" onclick="discount()" value="Show Total">
-</form>
+        <input type="button" onclick="discount()" value="Show Total">
+    </form>
 
 
-<p id="result">This text will be replaced </p>
+    <p id="result">This text will be replaced </p>
 
-<script> 
+    <script>
 
-function discount (){
-    myOutput = ""
-    
-    price = document.getElementById("price").value
-    count = document.getElementById("count").value
-    reduction = document.getElementById("reduction").value
+        function discount() {
+            myOutput = ""
 
-    myOutput += "Totals are: "
-    
-    for (let i = 0; i < 5; i++) {
-        var total = (price * count) - (price * count * (reduction / 100 ));
-        myOutput += reduction + "% is " + total.toFixed(1) + "; "
-        reduction++
-    }
-    
-    out = document.getElementById("result")
-    out.innerHTML = "<b>" + myOutput + "</b>"
-}
-</script>
+            price = document.getElementById("price").value
+            count = document.getElementById("count").value
+            reduction = document.getElementById("reduction").value
 
+            myOutput += "Totals are: "
+
+            for (let i = 0; i < 5; i++) {
+                var total = (price * count) - (price * count * (reduction / 100));
+                myOutput += reduction + "% is " + total.toFixed(1) + "; "
+                reduction++
+            }
+
+            out = document.getElementById("result")
+            out.innerHTML = "<b>" + myOutput + "</b>"
+        }
+    </script>
+
+    <h2>Radio Calcs</h2>
+
+    <form>
+        <input type="radio" id="sum" name="sum" value="sum" onclick="chooseOp()">
+        <label for="sum">sum</label></br>
+
+        <input type="radio" id="mult" name="mult" value="multiply" onclick="chooseOp()">
+        <label for="mult">mult</label></br>
+
+        <input type="radio" id="exp" name="exp" value="exponent" onclick="chooseOp()">
+        <label for="exp">exp</label></br>
+    </form>
+
+
+    <p id="result2">This text will be replaced </p>
+
+    <script>
+        function chooseOp() {
+            price = document.getElementById("price").value
+            reduction = document.getElementById("reduction").value
+
+            sum = document.getElementById("sum").checked
+            mult = document.getElementById("mult").checked
+            exp = document.getElementById("exp").checked
+
+            out = document.getElementById("result2")
+            if (sum) {
+                total = Number(price) + Number(reduction)
+                out.innerHTML = "The sum of " + price + " and " + reduction + " is: " + total
+            } else if (mult) {
+                out.innerHTML = "The product of " + price + " and " + reduction + " is: " + (price * reduction)
+            }
+            if (exp) {
+                out.innerHTML = "The total of " + price + " raised to " + reduction + " is: " + (price ** reduction)
+            }
+        }
+
+    </script>
 </body>
-</html> 
+
+</html>
