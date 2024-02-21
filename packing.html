@@ -19,7 +19,17 @@
     <label for="tablet">Tablet </label>
     <input type ="checkbox" id="tablet" name="tablet" value="false"> <br>
 
-    <input type="button" onclick="selectPack()" value="Select for Packing">
+    <input type="button" onclick="selectPack()" value="Select for Packing"> <hr>
+</form>
+
+<form>
+    <label for="month">Enter travel month</label>
+    <input type ="text" id="month" name="month" value="May"> <br>
+
+    <label for="price">Enter price </label>
+    <input type ="text" id="price" name="price"> <br>
+
+    <input type="button" onclick="updatePack()" value="Update the pack">
 </form>
 
 
@@ -28,7 +38,7 @@
 <script> 
 var my_pack = {}
 
-function selectPack (){
+function selectPack(month, price){
     var my_pack = {}
 
     light = document.getElementById("light").checked
@@ -38,9 +48,21 @@ function selectPack (){
     my_pack.light = light
     my_pack.carry = carry
     my_pack.tablet = tablet
+    my_pack.month = month
+    my_pack.price = price
 
     out = document.getElementById("result")
+    if(month != undefined && price !== undefined){
+        out.innerHTML = "Light Packing: "+ my_pack.light + " Carry: " + my_pack.carry + " Tablet: " + my_pack.tablet + " Month: " + my_pack.month + " Price: " + my_pack.price
+    } else {
     out.innerHTML = "Light Packing: "+ my_pack.light + " Carry: " + my_pack.carry + " Tablet: " + my_pack.tablet
+    }
+}
+
+function updatePack(){
+    month = document.getElementById("month").value
+    price = document.getElementById("price").value
+    selectPack(month, price)
 }
 </script>
 
