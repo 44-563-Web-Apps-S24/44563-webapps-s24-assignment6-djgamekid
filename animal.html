@@ -32,7 +32,7 @@
             console.log("Getting form values")
             animal = document.getElementById("form1_hidden_animal").value
             guess = document.getElementById("form1_guess").value
-            
+
             out = document.getElementById("result")
             out2 = document.getElementById("wrong")
             if (animal === guess) {
@@ -47,6 +47,36 @@
         }
     </script>
 
+    <div class="container">
+        <img id="picture" src="Apple Juice.jpg" alt="Apple Juice" width="150" height="150" onclick="selectImage()">
+    </div>
+
+    <script>
+        var useImage = 1
+
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    picture = document.getElementById("picture")
+                    picture.src = "Apple Juice.jpg"
+                    useImage = 2
+                    break;
+                case 2:
+                    picture = document.getElementById("picture")
+                    picture.src = "rum.jpg"
+                    useImage = 3
+                    break;
+                case 3:
+                    picture = document.getElementById("picture")
+                    picture.src = "Sprite.jpg"
+                    useImage = 1
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    </script>
 </body>
 
 </html>
