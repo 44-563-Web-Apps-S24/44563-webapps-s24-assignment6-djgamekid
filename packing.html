@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Packing I Barely Knew Her</title>
+</head>
+
+<body>
+
+<h2>Darren Ross packs for a trip</h2>
+
+<form>
+    <label for="light">Pack light </label>
+    <input type ="checkbox" id="light" name="light" value="true"> <br>
+
+    <label for="carry">Carry on </label>
+    <input type ="checkbox" id="carry" name="carry" value="true"> <br>
+
+    <label for="tablet">Tablet </label>
+    <input type ="checkbox" id="tablet" name="tablet" value="false"> <br>
+
+    <input type="button" onclick="selectPack()" value="Select for Packing">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+var my_pack = {}
+
+function selectPack (){
+    var my_pack = {}
+
+    light = document.getElementById("light").checked
+    carry = document.getElementById("carry").checked
+    tablet = document.getElementById("tablet").checked
+    
+    my_pack.light = light
+    my_pack.carry = carry
+    my_pack.tablet = tablet
+
+    out = document.getElementById("result")
+    out.innerHTML = "Light Packing: "+ my_pack.light + " Carry: " + my_pack.carry + " Tablet: " + my_pack.tablet
+}
+</script>
+
+</body>
+</html> 
